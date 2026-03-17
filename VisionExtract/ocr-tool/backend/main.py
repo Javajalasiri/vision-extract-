@@ -148,15 +148,3 @@ def status():
     if not MASTER_XLSX.exists(): return {"total_records":0,"file_exists":False}
     wb=load_workbook(MASTER_XLSX,read_only=True); ws=wb["Extracted Data"]; total=ws.max_row-1; wb.close()
     return {"total_records":total,"file_exists":True,"download_url":"/download/"}
-```
-
----
-
-Also update `backend/requirements.txt` — remove the `anthropic` line, add `httpx`:
-```
-fastapi==0.115.0
-uvicorn[standard]==0.30.6
-python-multipart==0.0.12
-httpx>=0.27.0
-openpyxl==3.1.5
-pillow==10.4.0
